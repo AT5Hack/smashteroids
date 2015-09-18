@@ -113,20 +113,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawns:
-  - angle: 2
-    offset: {x: 0, y: .600000024, z: 0}
   - angle: 0
-    offset: {x: 0, y: .600000024, z: 0}
-  - angle: 0
-    offset: {x: .300000012, y: .300000012, z: 0}
+    offset: {x: 0, y: .400000006, z: 0}
   - angle: 0
     offset: {x: .5, y: 0, z: 0}
   - angle: 0
-    offset: {x: .300000012, y: -.300000012, z: 0}
-  - angle: 0
-    offset: {x: 0, y: -.600000024, z: 0}
-  - angle: -2
-    offset: {x: 0, y: -.600000024, z: 0}
+    offset: {x: 0, y: -.400000006, z: 0}
 --- !u!212 &21200774
 SpriteRenderer:
   m_ObjectHideFlags: 1
