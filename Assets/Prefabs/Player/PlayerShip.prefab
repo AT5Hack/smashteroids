@@ -185,20 +185,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lazerSound: {fileID: 8300000, guid: 89076d2d607f645bd89a619c76bf0112, type: 3}
   bulletSpawns:
-  - angle: 2
-    offset: {x: 0, y: .600000024, z: 0}
   - angle: 0
-    offset: {x: 0, y: .600000024, z: 0}
-  - angle: 0
-    offset: {x: .300000012, y: .300000012, z: 0}
+    offset: {x: 0, y: .400000006, z: 0}
   - angle: 0
     offset: {x: .5, y: 0, z: 0}
   - angle: 0
-    offset: {x: .300000012, y: -.300000012, z: 0}
-  - angle: 0
-    offset: {x: 0, y: -.600000024, z: 0}
-  - angle: -2
-    offset: {x: 0, y: -.600000024, z: 0}
+    offset: {x: 0, y: -.400000006, z: 0}
+  explosionPrefab: {fileID: 181692, guid: b7022a98fb10745b79c9275d31a11e20, type: 2}
 --- !u!212 &21200774
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -231,7 +224,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 181692, guid: b7022a98fb10745b79c9275d31a11e20, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 121852}

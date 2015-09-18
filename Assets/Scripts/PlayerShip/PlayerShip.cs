@@ -15,6 +15,7 @@ public class PlayerShip : MonoBehaviour {
 	public AudioClip lazerSound;
 
 	public List<BulletSpawn> bulletSpawns;
+	public GameObject explosionPrefab;
 
 	float speed;
 	int hp;
@@ -130,6 +131,12 @@ public class PlayerShip : MonoBehaviour {
 		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
 
 		gameObject.SetActive (false);
+
+		if(explosionPrefab != null)
+		{
+			var explosion = (GameObject) GameObject.Instantiate(explosionPrefab);
+			explosion.transform.position = transform.position;
+		}
 
 		GameManager.Instance.TriggerEndGame();
 	}
