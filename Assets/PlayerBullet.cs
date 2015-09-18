@@ -14,4 +14,13 @@ public class PlayerBullet : MonoBehaviour {
 	void Update () {
 		transform.Translate (transform.right * speed * Time.deltaTime);
 	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		var enemy = other.GetComponent<EnemyShip> ();
+		if (enemy != null)
+		{
+			GameObject.Destroy(this.gameObject);
+		}
+	}
 }
