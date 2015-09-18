@@ -44,6 +44,19 @@ MonoBehaviour:
     speed: 5
     hp: 1
     lives: 3
+  enemies:
+    dumb:
+      speed: 2
+      hp: 1
+      firingRate: 3
+    swoop:
+      speed: 2
+      hp: 2
+      firingRate: 3
+    kamakaze:
+      speed: 3
+      hp: 1
+      firingRate: -1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

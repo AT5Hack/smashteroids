@@ -9,7 +9,7 @@ public abstract class EnemyShipBaseAI : MonoBehaviour {
 	protected float lastMoveTime;
 	protected float lastShootTime;
 
-	private EnemyShip ship;
+	protected EnemyShip ship;
 
 
 	public virtual void Start() {
