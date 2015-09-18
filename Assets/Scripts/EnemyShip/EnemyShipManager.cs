@@ -57,8 +57,11 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 	}
 
 	private void SpawnNewBossEnemy() {
-		
-		
+		if (bossEnemyPrefabs.Length < 1) return;
+
+		GameObject prefab = bossEnemyPrefabs[Random.Range(0, bossEnemyPrefabs.Length)];
+		Vector3 pos = GetEnemySpawnPos();
+		Instantiate (prefab, pos, Quaternion.identity);
 	}
 
 	private Vector3 GetEnemySpawnPos() {
