@@ -7,6 +7,7 @@ public class PlayerShip : MonoBehaviour {
 	int lives;
 	int hp;
 	bool controlLocked;
+	int damageTaken;
 
 	// Use this for initialization
 	void Start () 
@@ -25,6 +26,11 @@ public class PlayerShip : MonoBehaviour {
 		{
 			PollInput ();
 			ConstrainPosition ();
+		}
+
+		if (damageTaken >= hp)
+		{
+			Die();
 		}
 
 	}
@@ -94,5 +100,10 @@ public class PlayerShip : MonoBehaviour {
 	void Fire()
 	{
 
+	}
+
+	void Die()
+	{
+		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
 	}
 }
