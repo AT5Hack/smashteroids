@@ -45,6 +45,7 @@ MonoBehaviour:
     hp: 1
     lives: 3
     bulletSpeed: 40
+    fireSpeed: .200000003
   enemies:
     dumb:
       speed: 2

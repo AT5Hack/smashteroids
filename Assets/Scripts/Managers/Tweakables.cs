@@ -15,6 +15,7 @@ public class Tweakables : Singleton<Tweakables> {
 		public int hp;
 		public int lives;
 		public int bulletSpeed;
+		public float fireSpeed;
 	}
 	#endregion
 
