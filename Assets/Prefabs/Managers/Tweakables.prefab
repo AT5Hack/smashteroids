@@ -49,25 +49,25 @@ MonoBehaviour:
   enemies:
     dumb:
       speed: 2
-      hp: 10
+      hp: 3
       firingRate: -1
       thinkRate: 0
       moveRate: 0
     swoop:
       speed: 2
-      hp: 20
+      hp: 4
       firingRate: 2
       thinkRate: 0
       moveRate: 0
     kamakaze:
       speed: 4
-      hp: 10
+      hp: 3
       firingRate: -1
       thinkRate: 1.5
       moveRate: 0
     asteroid:
       speed: 3
-      hp: 30
+      hp: 5
       firingRate: 0
       thinkRate: 0
       moveRate: 0

@@ -38,7 +38,6 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 		while (GameManager.Instance.playerShip.IsAlive()) {
 
 			if (ShouldBeginNewWave()) {
-				Debug.Log (isWaveComplete);
 
 				// if we should do a boss battle then spawn a random boss, otherwise spawn a new wave of normal enemies 
 				if (enemySpawnedCount >= bossBattleFrequency) {
