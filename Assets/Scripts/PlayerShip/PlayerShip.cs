@@ -6,6 +6,7 @@ public class PlayerShip : MonoBehaviour {
 	float speed;
 	int lives;
 	int hp;
+	int currentHP;
 
 	// Use this for initialization
 	void Start () 
@@ -13,6 +14,7 @@ public class PlayerShip : MonoBehaviour {
 		speed = Tweakables.Instance.player.speed;
 		lives = Tweakables.Instance.player.lives;
 		hp = Tweakables.Instance.player.hp;
+		currentHP = hp;
 	}
 	
 	// Update is called once per frame
@@ -58,5 +60,9 @@ public class PlayerShip : MonoBehaviour {
 	void Fire()
 	{
 
+	}
+
+	public bool IsAlive() {
+		return (currentHP > 0f);
 	}
 }
