@@ -10,10 +10,12 @@ public abstract class EnemyShipBaseAI : MonoBehaviour {
 	protected float lastShootTime;
 
 	private EnemyShip ship;
+	private PlayerShip playerShip;
 
 
 	public virtual void Start() {
 		ship = GetComponent<EnemyShip> ();
+		playerShip = FindObjectOfType<PlayerShip> ();
 	}
 
 	public void Brain() {
