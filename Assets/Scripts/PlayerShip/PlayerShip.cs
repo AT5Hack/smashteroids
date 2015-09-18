@@ -6,7 +6,6 @@ public class PlayerShip : MonoBehaviour {
 	float speed;
 	int lives;
 	int hp;
-	int currentHP;
 	bool controlLocked;
 	int damageTaken;
 
@@ -17,7 +16,6 @@ public class PlayerShip : MonoBehaviour {
 		speed = Tweakables.Instance.player.speed;
 		lives = Tweakables.Instance.player.lives;
 		hp = Tweakables.Instance.player.hp;
-		currentHP = hp;
 
 		StartCoroutine (ForceMovement(Vector3.right, 5));
 	}
@@ -25,17 +23,16 @@ public class PlayerShip : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(!controlLocked)
-		{
-			PollInput ();
-			ConstrainPosition ();
-		}
-
 		if (damageTaken >= hp)
 		{
 			Die();
 		}
 
+		if(!controlLocked)
+		{
+			PollInput ();
+			ConstrainPosition ();
+		}
 	}
 
 	/// <summary>
@@ -106,7 +103,7 @@ public class PlayerShip : MonoBehaviour {
 	}
 	
 	public bool IsAlive() {
-		return (currentHP > 0f);
+		return (damageTaken < hp);
 	}
 
 	void Die()
