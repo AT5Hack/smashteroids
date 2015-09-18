@@ -27,12 +27,6 @@ public class PlayerShip : MonoBehaviour {
 			PollInput ();
 			ConstrainPosition ();
 		}
-
-		if (damageTaken >= hp)
-		{
-			Die();
-		}
-
 	}
 
 	/// <summary>
@@ -105,5 +99,22 @@ public class PlayerShip : MonoBehaviour {
 	void Die()
 	{
 		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
+
+		gameObject.SetActive (false);
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		DamagePlayer hazard = collider.GetComponent<DamagePlayer> ();
+
+		if (hazard != null)
+		{
+			damageTaken += hazard.damage;
+
+			if (damageTaken >= hp)
+			{
+				Die();
+			}
+		}
 	}
 }
