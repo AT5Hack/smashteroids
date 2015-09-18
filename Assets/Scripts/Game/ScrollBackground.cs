@@ -1,21 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScrollBackground : MonoBehaviour {
 
 	public float speed;
-
 	public float wrapAmount;
+
+	public List<Transform> bgChunks;
 
 	void Update () 
 	{
-		transform.Translate (Vector3.left * speed * Time.deltaTime);
+		var moveAmount = Vector3.left * speed * Time.deltaTime;
 
-		if(transform.position.x <= -wrapAmount)
+		foreach (Transform chunk in bgChunks)
 		{
-			var pos = transform.localPosition;
-			pos.x += wrapAmount*2;
-			transform.localPosition = pos;
+			chunk.Translate (moveAmount);
+			
+			if(chunk.localPosition.x <= -wrapAmount)
+			{
+				var pos = chunk.localPosition;
+				pos.x += wrapAmount*2;
+				chunk.localPosition = pos;
+			}
 		}
+
 	}
 }
