@@ -49,15 +49,21 @@ MonoBehaviour:
     dumb:
       speed: 2
       hp: 1
-      firingRate: 3
+      firingRate: -1
+      thinkRate: 0
+      moveRate: 0
     swoop:
       speed: 2
       hp: 2
-      firingRate: 3
+      firingRate: 2
+      thinkRate: 0
+      moveRate: 0
     kamakaze:
-      speed: 3
+      speed: 4
       hp: 1
       firingRate: -1
+      thinkRate: 1.5
+      moveRate: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

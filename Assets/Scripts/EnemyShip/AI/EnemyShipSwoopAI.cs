@@ -4,22 +4,7 @@ using System.Collections;
 public class EnemyShipSwoopAI : EnemyShipBaseAI {
 
 
-	#region abstract functions to be implemented
-	// should we think this step
-	protected override bool ShouldThink() {
-		return true;
-	}
-	
-	// should we move this step
-	protected override bool ShouldMove() {
-		return true;
-	}
-	
-	// should we shoot this step
-	protected override bool ShouldShoot() {
-		return true;
-	}
-
+	#region functions to be implemented/overriden
 	// do any thinking and calculations about how to act this step
 	protected override void Think() {
 
@@ -34,5 +19,5 @@ public class EnemyShipSwoopAI : EnemyShipBaseAI {
 	protected override void Shoot() {
 
 	}
-	#endregion abstract functions to be implemented
+	#endregion functions to be implemented/overriden
 }

@@ -40,6 +40,8 @@ public class Tweakables : Singleton<Tweakables> {
 		public float speed;
 		public int hp;
 		public float firingRate;
+		public float thinkRate;
+		public float moveRate;
 
 	}
 
