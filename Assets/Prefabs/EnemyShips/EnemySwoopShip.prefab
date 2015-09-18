@@ -76,7 +76,6 @@ GameObject:
   - 114: {fileID: 11447548}
   - 50: {fileID: 5072326}
   - 114: {fileID: 11405566}
-  - 114: {fileID: 11416800}
   m_Layer: 0
   m_Name: EnemySwoopShip
   m_TagString: Untagged
@@ -276,17 +275,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swoopFreq: 2
   swoopMagnitude: 3
---- !u!114 &11416800
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb061be8d8595641aed463ea38f7251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11447548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 3
   explosionEffect: {fileID: 188240, guid: fe2b110e8a7d447f9a1698fb0cb067db, type: 2}
+  Points: 100
 --- !u!198 &19846684
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2551,6 +2540,10 @@ Prefab:
       propertyPath: explosionEffect
       value: 
       objectReference: {fileID: 188240, guid: fe2b110e8a7d447f9a1698fb0cb067db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Points
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133800}

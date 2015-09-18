@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 4
   explosionEffect: {fileID: 188240, guid: fe2b110e8a7d447f9a1698fb0cb067db, type: 2}
+  Points: 100
 --- !u!114 &11499226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,6 +185,10 @@ Prefab:
       propertyPath: explosionEffect
       value: 
       objectReference: {fileID: 188240, guid: fe2b110e8a7d447f9a1698fb0cb067db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Points
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108780}
