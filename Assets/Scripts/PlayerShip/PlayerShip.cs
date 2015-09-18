@@ -99,6 +99,7 @@ public class PlayerShip : MonoBehaviour {
 
 	void ConstrainPosition() 
 	{
+		transform.position = GameManager.Instance.boundary.bounds.ClosestPoint (transform.position);
 
 	}
 
