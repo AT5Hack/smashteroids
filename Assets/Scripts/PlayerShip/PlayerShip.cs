@@ -20,12 +20,17 @@ public class PlayerShip : MonoBehaviour {
 	bool controlLocked;
 	int damageTaken;
 
+	float fireSpeed = 0.2f;
+
+	float lastFire = 0;
+
 	// Use this for initialization
 	void Start () 
 	{
 		speed = Tweakables.Instance.player.speed;
 		lives = Tweakables.Instance.player.lives;
 		hp = Tweakables.Instance.player.hp;
+		fireSpeed = Tweakables.Instance.player.fireSpeed;
 
 		StartCoroutine (ForceMovement(Vector3.right, 5));
 	}
@@ -66,27 +71,9 @@ public class PlayerShip : MonoBehaviour {
 
 	void PollInput() 
 	{
-		if (Input.GetKey(KeyCode.UpArrow))
-		{
-			Move(Vector3.up);
-		}
+		Move(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0));
 
-		if (Input.GetKey(KeyCode.DownArrow))
-		{
-			Move(Vector3.down);
-		}
-
-		if (Input.GetKey(KeyCode.LeftArrow))
-		{
-			Move(Vector3.left);
-		}
-
-		if (Input.GetKey(KeyCode.RightArrow))
-		{
-			Move(Vector3.right);
-		}
-
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKey(KeyCode.Space))
 		{
 			Fire ();
 		}
@@ -105,6 +92,11 @@ public class PlayerShip : MonoBehaviour {
 
 	void Fire()
 	{
+		if (Time.time < lastFire + fireSpeed)
+			return;
+
+		lastFire = Time.time;
+
 		foreach(var spawn in bulletSpawns)
 		{
 			// load and instantiate the bullet

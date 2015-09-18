@@ -15,6 +15,7 @@ public class Tweakables : Singleton<Tweakables> {
 		public int hp;
 		public int lives;
 		public int bulletSpeed;
+		public float fireSpeed;
 	}
 	#endregion
 
@@ -24,7 +25,8 @@ public class Tweakables : Singleton<Tweakables> {
 		NONE,
 		DUMB,
 		SWOOP,
-		KAMAKAZE
+		KAMAKAZE,
+		ASTEROID
 	}
 
 	[Serializable]
@@ -33,6 +35,7 @@ public class Tweakables : Singleton<Tweakables> {
 		public DumbEnemyShip dumb;
 		public SwoopEnemyShip swoop;
 		public KamakazeEnemyShip kamakaze;
+		public AsteroidEnemy asteroid;
 	}
 
 	[Serializable]
@@ -42,12 +45,12 @@ public class Tweakables : Singleton<Tweakables> {
 		public float firingRate;
 		public float thinkRate;
 		public float moveRate;
-
 	}
 
 	[Serializable] public class DumbEnemyShip : BaseEnemyStats {}
 	[Serializable] public class SwoopEnemyShip : BaseEnemyStats {}
 	[Serializable] public class KamakazeEnemyShip : BaseEnemyStats {}
+	[Serializable] public class AsteroidEnemy : BaseEnemyStats {}
 
 	public BaseEnemyStats GetEnemyStatsForEnemy(EnemyType et) {
 		switch (et) {
@@ -55,6 +58,8 @@ public class Tweakables : Singleton<Tweakables> {
 			return enemies.swoop;
 		case EnemyType.KAMAKAZE:
 			return enemies.kamakaze;
+		case EnemyType.ASTEROID:
+			return enemies.asteroid;
 		case EnemyType.NONE:
 		case EnemyType.DUMB:
 		default:

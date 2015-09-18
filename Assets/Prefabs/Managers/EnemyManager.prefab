@@ -60,6 +60,7 @@ MonoBehaviour:
   - {fileID: 116936, guid: a559d76436513478b982d9d547f50767, type: 2}
   - {fileID: 133800, guid: 0f75831a6dba848a8b60f7592db9bf47, type: 2}
   - {fileID: 117946, guid: a845ff8d90df64acf91887ad6afc023b, type: 2}
+  - {fileID: 108780, guid: a220cbf1acd124d3498aa5eb3103c178, type: 2}
   bossEnemyPrefabs: []
 --- !u!1001 &100100000
 Prefab:
