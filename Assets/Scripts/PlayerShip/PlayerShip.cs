@@ -11,6 +11,8 @@ public class PlayerShip : MonoBehaviour {
 		public float angle;
 		public Vector3 offset;
 	}
+	private AudioSource source;
+	public AudioClip lazerSound;
 
 	public List<BulletSpawn> bulletSpawns;
 
@@ -26,6 +28,8 @@ public class PlayerShip : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+
+		source = GetComponent<AudioSource>();
 		speed = Tweakables.Instance.player.speed;
 		hp = Tweakables.Instance.player.hp;
 		fireSpeed = Tweakables.Instance.player.fireSpeed;
@@ -114,6 +118,7 @@ public class PlayerShip : MonoBehaviour {
 			// fire bullet from ship's position and apply offset
 			bullet.transform.position = transform.position + spawn.offset;
 		}
+		source.PlayOneShot(lazerSound);
 	}
 	
 	public bool IsAlive() {
