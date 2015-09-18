@@ -64,6 +64,12 @@ MonoBehaviour:
       firingRate: -1
       thinkRate: 1.5
       moveRate: 0
+    asteroid:
+      speed: 3
+      hp: 30
+      firingRate: 0
+      thinkRate: 0
+      moveRate: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
