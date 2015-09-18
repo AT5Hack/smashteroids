@@ -35,7 +35,7 @@ public class EnemyShip : MonoBehaviour {
 	}
 
 	private void Die() {
-		Dispatcher.FireEvent (this, new EnemyDeathEvent ());
+		Dispatcher.FireEvent<EnemyDeathEvent> (this, new EnemyDeathEvent (this));
 		Destroy (gameObject);
 	}
 

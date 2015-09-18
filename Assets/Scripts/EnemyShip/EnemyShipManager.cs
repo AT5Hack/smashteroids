@@ -1,22 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyShipManager : Singleton<EnemyShipManager> {
 	
-	public float startWaveFrequency = 6f;
+	public float waveCheckFreq = 1f;
+	public float minWaveFreqWait = 5f;
 	public int bossBattleFrequency = 20;
 	public GameObject[] normalEnemyPrefabs;
 	public GameObject[] bossEnemyPrefabs;
 
+	private float lastSpawnTime;
 	private int enemyWaveCount = 0;
 	private int enemySpawnedCount = 0;
+	private bool isWaveComplete = true;
 	private WaitForSeconds waveFreqWait;
 	private Collider spawnArea;
 
+	private List<EnemyShip> currentWaveEnemies = new List<EnemyShip>();
+
 
 	public void Start() {
-		waveFreqWait = new WaitForSeconds(startWaveFrequency);
+		waveFreqWait = new WaitForSeconds(waveCheckFreq);
 		spawnArea = GetComponent<Collider> ();
+
+		Dispatcher.Subscribe<EnemyDeathEvent>(OnEnemyDeath);
 
 		// start the enemy waves after a few second wait
 		StartCoroutine (BeginEnemyWaves ());
@@ -29,12 +37,17 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 		// while the player is still alive keep spawning enemies
 		while (GameManager.Instance.playerShip.IsAlive()) {
 
-			// if we should do a boss battle then spawn a random boss, otherwise spawn a new wave of normal enemies 
-			if (enemySpawnedCount >= bossBattleFrequency) {
-				SpawnNewBossEnemy();
-			}
-			else {
-				SpawnNewNormalEnemyWave();
+			if (ShouldBeginNewWave()) {
+				Debug.Log (isWaveComplete);
+
+				// if we should do a boss battle then spawn a random boss, otherwise spawn a new wave of normal enemies 
+				if (enemySpawnedCount >= bossBattleFrequency) {
+					enemySpawnedCount = 0;
+					SpawnNewBossEnemy();
+				}
+				else {
+					SpawnNewNormalEnemyWave();
+				}
 			}
 
 			// yield/wait the spawn frequency time
@@ -42,26 +55,41 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 		}
 	}
 
+	private bool ShouldBeginNewWave() {
+		// start a new wave if we are stil alive and if we the last wave is complete or the min wait time as elapsed
+		return (GameManager.Instance.playerShip.IsAlive() && (isWaveComplete || (Time.time-lastSpawnTime) >= minWaveFreqWait));
+	}
 
 	private void SpawnNewNormalEnemyWave() {
+		isWaveComplete = false;
+		lastSpawnTime = Time.time;
 		enemyWaveCount++;
+		currentWaveEnemies.Clear ();
 
 		// spawn one enemy for every wave we've spawned so far
 		GameObject prefab;
+		GameObject clone;
 		Vector3 pos;
 		for (int i=0; i<enemyWaveCount; i++) {
 			prefab = normalEnemyPrefabs[Random.Range(0, normalEnemyPrefabs.Length)];
 			pos = GetEnemySpawnPos();
-			Instantiate (prefab, pos, Quaternion.identity);
+			clone = Instantiate (prefab, pos, Quaternion.identity) as GameObject;
+			currentWaveEnemies.Add (clone.GetComponent<EnemyShip>());
 		}
 	}
 
 	private void SpawnNewBossEnemy() {
 		if (bossEnemyPrefabs.Length < 1) return;
 
+		isWaveComplete = false;
+		lastSpawnTime = Time.time;
+
 		GameObject prefab = bossEnemyPrefabs[Random.Range(0, bossEnemyPrefabs.Length)];
 		Vector3 pos = GetEnemySpawnPos();
 		Instantiate (prefab, pos, Quaternion.identity);
+
+		// make it require more spawns before doing the next boss battle
+		bossBattleFrequency += 10;
 	}
 
 	private Vector3 GetEnemySpawnPos() {
@@ -72,6 +100,16 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 		float y = Random.Range (spawnArea.bounds.min.y, spawnArea.bounds.max.y);
 
 		return new Vector3 (x, y, 0f);
+	}
+
+	public void OnEnemyDeath (object sender, EnemyDeathEvent ev) {
+		if (currentWaveEnemies.Contains (ev.ship)) {
+			currentWaveEnemies.Remove (ev.ship);
+		}
+
+		if (currentWaveEnemies.Count < 1) {
+			isWaveComplete = true;
+		}
 	}
 	
 }

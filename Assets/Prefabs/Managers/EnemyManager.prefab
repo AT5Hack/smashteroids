@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlobalSingleton: 1
-  startWaveFrequency: 5
+  waveCheckFreq: 1
+  minWaveFreqWait: 5
   bossBattleFrequency: 20
   normalEnemyPrefabs:
   - {fileID: 116936, guid: a559d76436513478b982d9d547f50767, type: 2}
