@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyShip : MonoBehaviour {
 
 	public Tweakables.EnemyType enemyType = Tweakables.EnemyType.NONE;
+	public GameObject explosionEffect;
 
 	private Tweakables.BaseEnemyStats mBaseStats;
 	public Tweakables.BaseEnemyStats baseStats {
@@ -36,6 +37,13 @@ public class EnemyShip : MonoBehaviour {
 
 	private void Die() {
 		Dispatcher.FireEvent<EnemyDeathEvent> (this, new EnemyDeathEvent (this));
+
+		if(explosionEffect != null)
+		{
+			var explosion = (GameObject) GameObject.Instantiate(explosionEffect);
+			explosion.transform.position = transform.position;
+		}
+
 		Destroy (gameObject);
 	}
 
