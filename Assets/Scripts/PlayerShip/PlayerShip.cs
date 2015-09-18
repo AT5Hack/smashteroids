@@ -73,7 +73,7 @@ public class PlayerShip : MonoBehaviour {
 	{
 		Move(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0));
 
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(KeyCode.Space) || Input.GetButton("Fire1"))
 		{
 			Fire ();
 		}
