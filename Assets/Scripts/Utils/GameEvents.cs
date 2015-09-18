@@ -6,3 +6,7 @@ public class PlayerDeathEvent : EventArgs {
 
 }
 
+public class EnemyDeathEvent : EventArgs {
+	
+}
+
