@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AsteroidAI : EnemyShipBaseAI {
@@ -22,7 +22,7 @@ public class AsteroidAI : EnemyShipBaseAI {
 	// do any movement after thinking this step
 	protected override void Move() {
 		// simply move to the left at a constant speed
-		transform.Translate(Vector3.left * ship.baseStats.speed * Time.deltaTime);
+		transform.Translate(Vector3.left * ship.baseStats.moveSpeed * Time.deltaTime);
 	}
 	
 	// do any shooting after thinking this step

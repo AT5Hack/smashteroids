@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyShip : MonoBehaviour {
 
 	public Tweakables.EnemyType enemyType = Tweakables.EnemyType.NONE;
+	public GameObject gunPoint;
 
 	private Tweakables.BaseEnemyStats mBaseStats;
 	public Tweakables.BaseEnemyStats baseStats {
@@ -11,7 +12,7 @@ public class EnemyShip : MonoBehaviour {
 	}
 	
 	private int damageTaken;
-
+	private Transform[] gunPoints;
 	private EnemyShipBaseAI AI;
 
 
@@ -19,6 +20,9 @@ public class EnemyShip : MonoBehaviour {
 	void Start () {
 		mBaseStats = Tweakables.Instance.GetEnemyStatsForEnemy (enemyType);
 		AI = GetComponent<EnemyShipBaseAI> ();
+		if (gunPoint != null) {
+			gunPoints = gunPoint.GetComponentsInChildren<Transform> ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -49,5 +53,11 @@ public class EnemyShip : MonoBehaviour {
 				Die();
 			}
 		}
+	}
+
+	public Vector3 GetRandomGunPoint() {
+		if (gunPoints == null) return transform.position;
+
+		return gunPoints [Random.Range (0, gunPoints.Length)].position;
 	}
 }

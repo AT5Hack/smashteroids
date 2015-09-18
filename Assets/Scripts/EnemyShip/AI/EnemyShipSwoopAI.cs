@@ -22,13 +22,20 @@ public class EnemyShipSwoopAI : EnemyShipBaseAI {
 	
 	// do any movement after thinking this step
 	protected override void Move() {
-		movePos += Vector3.left * Time.deltaTime * ship.baseStats.speed;
+		movePos += Vector3.left * Time.deltaTime * ship.baseStats.moveSpeed;
 		transform.position = movePos + Vector3.up * Mathf.Sin (Time.time * swoopFreq) * swoopMagnitude;
 	}
 	
 	// do any shooting after thinking this step
 	protected override void Shoot() {
-
+		// load and instantiate the bullet
+		var bulletPrefab = Resources.Load("EnemyBullet");
+		var bulletGo = (GameObject) GameObject.Instantiate(bulletPrefab, ship.GetRandomGunPoint(), Quaternion.identity);
+		var bullet = bulletGo.GetComponent<EnemyBullet>();
+		
+		if (bullet != null) {
+			bullet.speed = ship.baseStats.bulletSpeed;
+		}
 	}
 	#endregion functions to be implemented/overriden
 }

@@ -298,7 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba8664626ea54aa9ab8b10767c8d127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 3
+  enemyType: 2
+  gunPoint: {fileID: 147148}
 --- !u!198 &19846684
 ParticleSystem:
   m_ObjectHideFlags: 1

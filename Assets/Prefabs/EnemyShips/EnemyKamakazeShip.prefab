@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 3
+  gunPoint: {fileID: 127718}
 --- !u!114 &11478592
 MonoBehaviour:
   m_ObjectHideFlags: 1
