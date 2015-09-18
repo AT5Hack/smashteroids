@@ -15,7 +15,6 @@ public class PlayerShip : MonoBehaviour {
 	public List<BulletSpawn> bulletSpawns;
 
 	float speed;
-	int lives;
 	int hp;
 	bool controlLocked;
 	int damageTaken;
@@ -28,7 +27,6 @@ public class PlayerShip : MonoBehaviour {
 	void Start () 
 	{
 		speed = Tweakables.Instance.player.speed;
-		lives = Tweakables.Instance.player.lives;
 		hp = Tweakables.Instance.player.hp;
 		fireSpeed = Tweakables.Instance.player.fireSpeed;
 
