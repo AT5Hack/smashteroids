@@ -73,7 +73,7 @@ public class PlayerShip : MonoBehaviour {
 	{
 		Move(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0));
 
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetButton("Fire1"))
 		{
 			Fire ();
 		}
@@ -123,6 +123,7 @@ public class PlayerShip : MonoBehaviour {
 		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
 
 		gameObject.SetActive (false);
+		GameManager.Instance.TriggerEndGame();
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)
