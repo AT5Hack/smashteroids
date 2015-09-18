@@ -121,6 +121,8 @@ public class PlayerShip : MonoBehaviour {
 		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
 
 		gameObject.SetActive (false);
+
+		GameManager.Instance.TriggerEndGame();
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)

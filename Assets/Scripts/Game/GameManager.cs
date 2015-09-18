@@ -6,7 +6,6 @@ public class GameManager : Singleton<GameManager>
 
 	public Collider2D boundary;
 	public Text PointsText;
-	public Text LivesText;
 
 	public GameObject EndGameScreen;
 
