@@ -9,6 +9,7 @@ public class PlayerShip : MonoBehaviour {
 	bool controlLocked;
 	int damageTaken;
 
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -27,12 +28,6 @@ public class PlayerShip : MonoBehaviour {
 			PollInput ();
 			ConstrainPosition ();
 		}
-
-		if (damageTaken >= hp)
-		{
-			Die();
-		}
-
 	}
 
 	/// <summary>
@@ -101,9 +96,30 @@ public class PlayerShip : MonoBehaviour {
 	{
 
 	}
+	
+	public bool IsAlive() {
+		return (damageTaken < hp);
+	}
 
 	void Die()
 	{
 		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
+
+		gameObject.SetActive (false);
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		DamagePlayer hazard = collider.GetComponent<DamagePlayer> ();
+
+		if (hazard != null)
+		{
+			damageTaken += hazard.damage;
+
+			if (damageTaken >= hp)
+			{
+				Die();
+			}
+		}
 	}
 }

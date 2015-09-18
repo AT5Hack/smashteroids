@@ -42,7 +42,7 @@ MonoBehaviour:
   GlobalSingleton: 1
   player:
     speed: 5
-    hp: 5
+    hp: 1
     lives: 3
 --- !u!1001 &100100000
 Prefab:
