@@ -3,23 +3,18 @@ using System.Collections;
 
 public class EnemyShipSwoopAI : EnemyShipBaseAI {
 
+	public float swoopFreq = 2f;
+	public float swoopMagnitude = 3f;
 
-	#region abstract functions to be implemented
-	// should we think this step
-	protected override bool ShouldThink() {
-		return true;
-	}
+	private Vector3 movePos;
+
+	public override void Start () {
+		base.Start ();
 	
-	// should we move this step
-	protected override bool ShouldMove() {
-		return true;
-	}
-	
-	// should we shoot this step
-	protected override bool ShouldShoot() {
-		return true;
+		movePos = transform.position;
 	}
 
+	#region functions to be implemented/overriden
 	// do any thinking and calculations about how to act this step
 	protected override void Think() {
 
@@ -27,12 +22,13 @@ public class EnemyShipSwoopAI : EnemyShipBaseAI {
 	
 	// do any movement after thinking this step
 	protected override void Move() {
-
+		movePos += Vector3.left * Time.deltaTime * ship.baseStats.speed;
+		transform.position = movePos + Vector3.up * Mathf.Sin (Time.time * swoopFreq) * swoopMagnitude;
 	}
 	
 	// do any shooting after thinking this step
 	protected override void Shoot() {
 
 	}
-	#endregion abstract functions to be implemented
+	#endregion functions to be implemented/overriden
 }

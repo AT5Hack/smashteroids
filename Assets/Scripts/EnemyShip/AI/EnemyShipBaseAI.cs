@@ -23,15 +23,27 @@ public abstract class EnemyShipBaseAI : MonoBehaviour {
 	}
 
 
-	#region abstract functions to be implemented
-	// should we think this step
-	protected abstract bool ShouldThink();
-	
+	#region functions to be implemented/overriden
 	// should we move this step
-	protected abstract bool ShouldMove();
+	protected virtual bool ShouldMove() {
+		bool result = (ship.baseStats.moveRate >= 0 && (lastMoveTime + ship.baseStats.moveRate) <= Time.time);
+		if (result) lastMoveTime = Time.time;
+		return result;
+	}
 	
 	// should we shoot this step
-	protected abstract bool ShouldShoot();
+	protected virtual bool ShouldShoot() {
+		bool result = (ship.baseStats.firingRate >= 0 && (lastShootTime + ship.baseStats.firingRate) <= Time.time);
+		if (result) lastShootTime = Time.time;
+		return result;
+	}
+	
+	// do any thinking and calculations about how to act this step
+	protected virtual bool ShouldThink() {
+		bool result = (ship.baseStats.thinkRate >= 0 && (lastThinkTime + ship.baseStats.thinkRate) <= Time.time);
+		if (result) lastThinkTime = Time.time;
+		return result;
+	}
 
 	// do any thinking about how to act this step
 	protected abstract void Think();
@@ -41,5 +53,5 @@ public abstract class EnemyShipBaseAI : MonoBehaviour {
 
 	// do any shooting after thinking this step
 	protected abstract void Shoot();
-	#endregion abstract functions to be implemented
+	#endregion functions to be implemented/overriden
 }

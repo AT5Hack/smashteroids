@@ -3,38 +3,25 @@ using System.Collections;
 
 public class EnemyShipKamakazeAI : EnemyShipBaseAI {
 
-	private bool hasStartedKamakazeDive = false;
+	private Vector3 playerPos;
 
 
-	#region abstract functions to be implemented
-	// should we think this step
-	protected override bool ShouldThink() {
-		return true;
-	}
-	
-	// should we move this step
-	protected override bool ShouldMove() {
-		return true;
-	}
-	
-	// should we shoot this step
-	protected override bool ShouldShoot() {
-		return true;
-	}
-	
+	#region functions to be implemented/overriden
 	// do any thinking and calculations about how to act this step
 	protected override void Think() {
-		
+		// find the current player position
+		playerPos = GameManager.Instance.playerShip.transform.position;
 	}
 	
 	// do any movement after thinking this step
 	protected override void Move() {
-		
+		// move towards the last remembered player position
+		transform.position = Vector3.MoveTowards(transform.position, playerPos, ship.baseStats.speed * Time.deltaTime);
 	}
 	
 	// do any shooting after thinking this step
 	protected override void Shoot() {
 		
 	}
-	#endregion abstract functions to be implemented
+	#endregion functions to be implemented/overriden
 }

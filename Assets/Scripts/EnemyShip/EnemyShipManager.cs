@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyShipManager : Singleton<EnemyShipManager> {
 	
-	public float startWaveFrequency = 5f;
+	public float startWaveFrequency = 6f;
 	public int bossBattleFrequency = 20;
 	public GameObject[] normalEnemyPrefabs;
 	public GameObject[] bossEnemyPrefabs;
@@ -50,7 +50,7 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 		GameObject prefab;
 		Vector3 pos;
 		for (int i=0; i<enemyWaveCount; i++) {
-			prefab = normalEnemyPrefabs[Random.Range(0, normalEnemyPrefabs.Length-1)];
+			prefab = normalEnemyPrefabs[Random.Range(0, normalEnemyPrefabs.Length)];
 			pos = GetEnemySpawnPos();
 			Instantiate (prefab, pos, Quaternion.identity);
 		}
