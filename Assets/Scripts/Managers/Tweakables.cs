@@ -11,6 +11,7 @@ public class Tweakables : Singleton<Tweakables> {
 		public float speed;
 		public int hp;
 		public int lives;
+		public int bulletSpeed;
 	}
 	
 }

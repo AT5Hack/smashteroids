@@ -1,14 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class PlayerShip : MonoBehaviour {
+
+	[Serializable]
+	public class BulletSpawn
+	{
+		public float angle;
+		public Vector3 offset;
+	}
+
+	public List<BulletSpawn> bulletSpawns;
 
 	float speed;
 	int lives;
 	int hp;
 	bool controlLocked;
 	int damageTaken;
-
 
 	// Use this for initialization
 	void Start () 
@@ -94,7 +104,21 @@ public class PlayerShip : MonoBehaviour {
 
 	void Fire()
 	{
+		foreach(var spawn in bulletSpawns)
+		{
+			// load and instantiate the bullet
+			var bulletPrefab = Resources.Load("PlayerBullet");
+			var bulletGo = (GameObject) GameObject.Instantiate(bulletPrefab);
+			var bullet = bulletGo.GetComponent<PlayerBullet>();
 
+			// rotate bullet
+			var rotation = bullet.transform.localRotation.eulerAngles;
+			rotation.z = spawn.angle;
+			bullet.transform.localRotation = Quaternion.Euler(rotation);
+
+			// fire bullet from ship's position and apply offset
+			bullet.transform.position = transform.position + spawn.offset;
+		}
 	}
 	
 	public bool IsAlive() {
