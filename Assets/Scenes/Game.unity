@@ -94,9 +94,13 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11418280, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
+      propertyPath: normalEnemyPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 487182, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 487182, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -125,6 +129,18 @@ Prefab:
     - target: {fileID: 487182, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418280, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
+      propertyPath: normalEnemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 133800, guid: 0f75831a6dba848a8b60f7592db9bf47, type: 2}
+    - target: {fileID: 487182, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 487182, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
@@ -359,6 +375,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95fa215df607a478b8354e00a803eb9e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1653646376 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100246, guid: 5b718c79926f549ebb14b34183315fb0, type: 2}
+  m_PrefabInternal: {fileID: 298710274}
+--- !u!65 &1653646377
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1653646376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2121761112
 Prefab:
   m_ObjectHideFlags: 0

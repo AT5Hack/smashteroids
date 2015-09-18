@@ -3,12 +3,15 @@ using System.Collections;
 
 public class GameManager : Singleton<GameManager> {
 
-	private PlayerShip playerShip;
+	private PlayerShip mPlayerShip;
+	public PlayerShip playerShip {
+		get { return mPlayerShip; }
+	}
 
 
 	// Use this for initialization
 	void Start () {
-		playerShip = FindObjectOfType<PlayerShip> ();
+		mPlayerShip = FindObjectOfType<PlayerShip> ();
 	}
 
 }
