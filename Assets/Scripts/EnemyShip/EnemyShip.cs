@@ -15,6 +15,8 @@ public class EnemyShip : MonoBehaviour {
 
 	private EnemyShipBaseAI AI;
 
+	public int Points;
+
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +46,7 @@ public class EnemyShip : MonoBehaviour {
 			explosion.transform.position = transform.position;
 		}
 
+		GameManager.Instance.Points += Points;
 		Destroy (gameObject);
 	}
 
