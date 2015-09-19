@@ -7,11 +7,15 @@ public class EnemyShipSwoopAI : EnemyShipBaseAI {
 	public float swoopMagnitude = 3f;
 
 	private Vector3 movePos;
+	private float randomRadians;
 
 	public override void Start () {
 		base.Start ();
 	
 		movePos = transform.position;
+		// we'll add a random amount to the value that we'll take the Sin() of, so that all ships don't follow
+		// the exact same sine wave.
+		randomRadians = Random.value * 6.28318531f;
 	}
 
 	#region functions to be implemented/overriden
@@ -23,7 +27,7 @@ public class EnemyShipSwoopAI : EnemyShipBaseAI {
 	// do any movement after thinking this step
 	protected override void Move() {
 		movePos += Vector3.left * Time.deltaTime * ship.baseStats.moveSpeed;
-		transform.position = movePos + Vector3.up * Mathf.Sin (Time.time * swoopFreq) * swoopMagnitude;
+		transform.position = movePos + Vector3.up * Mathf.Sin ((Time.time + randomRadians) * swoopFreq) * swoopMagnitude;
 	}
 	
 	// do any shooting after thinking this step
