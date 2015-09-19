@@ -58,7 +58,9 @@ public class EnemyShip : MonoBehaviour {
 		
 		if (hazard != null) {
 			damageTaken += hazard.damage;
-			
+
+			StartCoroutine(FlashSprite(Color.red));
+
 			if (damageTaken >= baseStats.hp) {
 				Die();
 			}
@@ -69,5 +71,18 @@ public class EnemyShip : MonoBehaviour {
 		if (gunPoints == null) return transform.position;
 
 		return gunPoints [Random.Range (0, gunPoints.Length)].position;
+	}
+
+	IEnumerator FlashSprite(Color color)
+	{
+		var sprite = GetComponentInChildren<SpriteRenderer> ();
+		if (sprite != null)
+		{
+			sprite.color = color;
+
+			yield return new WaitForSeconds(.1f);
+
+			sprite.color = Color.white;
+		}
 	}
 }
