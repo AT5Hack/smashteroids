@@ -11,8 +11,9 @@ public class PlayerShip : MonoBehaviour {
 		public float angle;
 		public Vector3 offset;
 	}
-	private AudioSource source;
-	public AudioClip lazerSound;
+
+	public AudioClip laserSound;
+	public AudioClip deathSound;
 
 	public List<BulletSpawn> bulletSpawns;
 	public GameObject explosionPrefab;
@@ -29,8 +30,6 @@ public class PlayerShip : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-
-		source = GetComponent<AudioSource>();
 		speed = Tweakables.Instance.player.speed;
 		hp = Tweakables.Instance.player.hp;
 		fireSpeed = Tweakables.Instance.player.fireSpeed;
@@ -119,7 +118,9 @@ public class PlayerShip : MonoBehaviour {
 			// fire bullet from ship's position and apply offset
 			bullet.transform.position = transform.position + spawn.offset;
 		}
-		source.PlayOneShot(lazerSound);
+
+		SoundManager.Instance.PlayOnce(laserSound);
+
 	}
 	
 	public bool IsAlive() {
@@ -130,6 +131,8 @@ public class PlayerShip : MonoBehaviour {
 	{
 		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
 
+		SoundManager.Instance.PlayOnce(deathSound);
+
 		gameObject.SetActive (false);
 
 		if(explosionPrefab != null)
@@ -137,7 +140,7 @@ public class PlayerShip : MonoBehaviour {
 			var explosion = (GameObject) GameObject.Instantiate(explosionPrefab);
 			explosion.transform.position = transform.position;
 		}
-
+			
 		GameManager.Instance.TriggerEndGame();
 	}
 
