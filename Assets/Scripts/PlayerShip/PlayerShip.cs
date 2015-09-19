@@ -134,8 +134,7 @@ public class PlayerShip : MonoBehaviour {
 
 		if(explosionPrefab != null)
 		{
-			var explosion = (GameObject) GameObject.Instantiate(explosionPrefab);
-			explosion.transform.position = transform.position;
+			var explosion = (GameObject) GameObject.Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 		}
 
 		GameManager.Instance.TriggerEndGame();

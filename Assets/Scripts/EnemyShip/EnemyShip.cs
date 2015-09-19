@@ -46,8 +46,7 @@ public class EnemyShip : MonoBehaviour {
 
 		if(explosionEffect != null)
 		{
-			var explosion = (GameObject) GameObject.Instantiate(explosionEffect);
-			explosion.transform.position = transform.position;
+			var explosion = (GameObject) GameObject.Instantiate(explosionEffect, transform.position, Quaternion.identity);
 		}
 
 		GameManager.Instance.Points += Points;
