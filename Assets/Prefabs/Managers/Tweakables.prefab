@@ -47,25 +47,29 @@ MonoBehaviour:
     fireSpeed: .200000003
   enemies:
     dumb:
-      speed: 2
+      moveSpeed: 2
+      bulletSpeed: 4
       hp: 3
-      firingRate: -1
+      firingRate: 3
       thinkRate: 0
       moveRate: 0
     swoop:
-      speed: 2
+      moveSpeed: 1.5
+      bulletSpeed: 4
       hp: 4
-      firingRate: 2
+      firingRate: 3
       thinkRate: 0
       moveRate: 0
     kamakaze:
-      speed: 4
+      moveSpeed: 4
+      bulletSpeed: 0
       hp: 3
       firingRate: -1
       thinkRate: 1.5
       moveRate: 0
     asteroid:
-      speed: 3
+      moveSpeed: 3
+      bulletSpeed: 0
       hp: 5
       firingRate: 0
       thinkRate: 0

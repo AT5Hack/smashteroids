@@ -39,7 +39,8 @@ public class Tweakables : Singleton<Tweakables> {
 
 	[Serializable]
 	public abstract class BaseEnemyStats {
-		public float speed;
+		public float moveSpeed;
+		public float bulletSpeed;
 		public int hp;
 		public float firingRate;
 		public float thinkRate;
