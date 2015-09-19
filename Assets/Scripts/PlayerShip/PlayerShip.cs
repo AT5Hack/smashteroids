@@ -36,8 +36,8 @@ public class PlayerShip : MonoBehaviour {
 		hp = Tweakables.Instance.player.hp;
 		fireSpeed = Tweakables.Instance.player.fireSpeed;
 
-		StartCoroutine (ForceMovement(3));
-	}
+		StartCoroutine (ForceMovement(Vector3.right, 5));
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -54,20 +54,19 @@ public class PlayerShip : MonoBehaviour {
 	/// </summary>
 	/// <param name="direction">Direction to move.</param>
 	/// <param name="distance">Distance to move in units.</param>
-	IEnumerator ForceMovement(float distance)
-	{
+	IEnumerator ForceMovement(Vector3 direction, float distance)
+    {
 		controlLocked = true;
 
 		float distanceTraveled = 0;
 
-		Vector3 oldPosition = transform.position;
-
 		// move forward until destination is reached
 		while (distanceTraveled < distance)
 		{
-			Move(Vector3.right);
-			distanceTraveled += Vector3.Distance(oldPosition, transform.position);
-			oldPosition = transform.position;
+			Vector3 oldPosition = transform.position;
+			Move (direction);
+            distanceTraveled += Vector3.Distance(oldPosition, transform.position);
+
 			yield return null; // wait until next frame
 		}
 
@@ -86,11 +85,8 @@ public class PlayerShip : MonoBehaviour {
 
 	void Move(Vector3 direction)
 	{
-			if (GetComponent<Rigidbody2D>().velocity.magnitude < speed)
-			{
-				GetComponent<Rigidbody2D>().AddForce(direction * speed);
-			}
-	}
+		transform.Translate(direction * speed * Time.deltaTime);
+    }
 
 	void ConstrainPosition() 
 	{
