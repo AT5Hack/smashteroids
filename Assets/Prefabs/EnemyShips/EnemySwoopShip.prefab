@@ -298,8 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba8664626ea54aa9ab8b10767c8d127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 2
-  gunPoint: {fileID: 147148}
+  enemyType: 3
+  explosionEffect: {fileID: 188240, guid: fe2b110e8a7d447f9a1698fb0cb067db, type: 2}
+  Points: 100
 --- !u!198 &19846684
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2534,6 +2535,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: swoopMagnitude
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 188240, guid: fe2b110e8a7d447f9a1698fb0cb067db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Points
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

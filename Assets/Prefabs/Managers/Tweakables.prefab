@@ -43,9 +43,8 @@ MonoBehaviour:
   player:
     speed: 6
     hp: 1
-    lives: 3
     bulletSpeed: 40
-    fireSpeed: .100000001
+    fireSpeed: .200000003
   enemies:
     dumb:
       moveSpeed: 2

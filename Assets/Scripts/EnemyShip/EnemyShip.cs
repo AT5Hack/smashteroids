@@ -5,6 +5,7 @@ public class EnemyShip : MonoBehaviour {
 
 	public Tweakables.EnemyType enemyType = Tweakables.EnemyType.NONE;
 	public GameObject gunPoint;
+	public GameObject explosionEffect;
 
 	private Tweakables.BaseEnemyStats mBaseStats;
 	public Tweakables.BaseEnemyStats baseStats {
@@ -14,6 +15,8 @@ public class EnemyShip : MonoBehaviour {
 	private int damageTaken;
 	private Transform[] gunPoints;
 	private EnemyShipBaseAI AI;
+
+	public int Points;
 
 
 	// Use this for initialization
@@ -40,6 +43,14 @@ public class EnemyShip : MonoBehaviour {
 
 	private void Die() {
 		Dispatcher.FireEvent<EnemyDeathEvent> (this, new EnemyDeathEvent (this));
+
+		if(explosionEffect != null)
+		{
+			var explosion = (GameObject) GameObject.Instantiate(explosionEffect);
+			explosion.transform.position = transform.position;
+		}
+
+		GameManager.Instance.Points += Points;
 		Destroy (gameObject);
 	}
 

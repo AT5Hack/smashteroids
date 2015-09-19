@@ -1,0 +1,30 @@
+Ship graphics come from The Space Ship & Mech Construction Kit 2: http://opengameart.org/content/space-ship-mech-construction-kit-2
+Licenses:
+   - http://creativecommons.org/licenses/by-sa/3.0/
+   - http://www.gnu.org/licenses/gpl-3.0.html
+
+ ---
+
+Asteroid graphic comes from Shmup Ships package: http://opengameart.org/content/shmup-ships
+Licenses: 
+   - http://creativecommons.org/licenses/by-sa/3.0/
+   - http://www.gnu.org/licenses/gpl-3.0.html
+   - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ 
+ ---
+ 
+Digital SFX set by Kenney Vleugels (www.kenney.nl)
+
+You may use these sounds in personal and commercial projects.
+Credit (www.kenney.nl) would be nice but is not mandatory.
+
+ ---
+ 
+Space background is from a procedural space image generator:  https://www.reddit.com/r/gamedev/comments/1xkp85/i_made_a_procedural_space_vista_generator_it_and/
+ 
+ ---
+
+Explosion Set by Master484: http://opengameart.org/content/explosion-set-1-m484-games
+ 
+ ---
+ 

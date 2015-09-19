@@ -11,11 +11,13 @@ public class PlayerShip : MonoBehaviour {
 		public float angle;
 		public Vector3 offset;
 	}
+	private AudioSource source;
+	public AudioClip lazerSound;
 
 	public List<BulletSpawn> bulletSpawns;
+	public GameObject explosionPrefab;
 
 	float speed;
-	int lives;
 	int hp;
 	bool controlLocked;
 	int damageTaken;
@@ -27,12 +29,13 @@ public class PlayerShip : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+
+		source = GetComponent<AudioSource>();
 		speed = Tweakables.Instance.player.speed;
-		lives = Tweakables.Instance.player.lives;
 		hp = Tweakables.Instance.player.hp;
 		fireSpeed = Tweakables.Instance.player.fireSpeed;
 
-		StartCoroutine (ForceMovement(Vector3.right, 5));
+		StartCoroutine (ForceMovement(3));
 	}
 	
 	// Update is called once per frame
@@ -50,19 +53,20 @@ public class PlayerShip : MonoBehaviour {
 	/// </summary>
 	/// <param name="direction">Direction to move.</param>
 	/// <param name="distance">Distance to move in units.</param>
-	IEnumerator ForceMovement(Vector3 direction, float distance)
+	IEnumerator ForceMovement(float distance)
 	{
 		controlLocked = true;
 
 		float distanceTraveled = 0;
 
+		Vector3 oldPosition = transform.position;
+
 		// move forward until destination is reached
 		while (distanceTraveled < distance)
 		{
-			Vector3 oldPosition = transform.position;
-			Move (direction);
+			Move(Vector3.right);
 			distanceTraveled += Vector3.Distance(oldPosition, transform.position);
-
+			oldPosition = transform.position;
 			yield return null; // wait until next frame
 		}
 
@@ -73,7 +77,7 @@ public class PlayerShip : MonoBehaviour {
 	{
 		Move(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0));
 
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetButton("Fire1"))
 		{
 			Fire ();
 		}
@@ -81,7 +85,10 @@ public class PlayerShip : MonoBehaviour {
 
 	void Move(Vector3 direction)
 	{
-		transform.Translate(direction * speed * Time.deltaTime);
+			if (GetComponent<Rigidbody2D>().velocity.magnitude < speed)
+			{
+				GetComponent<Rigidbody2D>().AddForce(direction * speed);
+			}
 	}
 
 	void ConstrainPosition() 
@@ -112,6 +119,7 @@ public class PlayerShip : MonoBehaviour {
 			// fire bullet from ship's position and apply offset
 			bullet.transform.position = transform.position + spawn.offset;
 		}
+		source.PlayOneShot(lazerSound);
 	}
 	
 	public bool IsAlive() {
@@ -123,6 +131,14 @@ public class PlayerShip : MonoBehaviour {
 		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
 
 		gameObject.SetActive (false);
+
+		if(explosionPrefab != null)
+		{
+			var explosion = (GameObject) GameObject.Instantiate(explosionPrefab);
+			explosion.transform.position = transform.position;
+		}
+
+		GameManager.Instance.TriggerEndGame();
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)
