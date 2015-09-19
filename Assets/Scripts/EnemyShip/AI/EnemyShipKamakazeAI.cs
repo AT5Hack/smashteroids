@@ -16,7 +16,7 @@ public class EnemyShipKamakazeAI : EnemyShipBaseAI {
 	// do any movement after thinking this step
 	protected override void Move() {
 		// move towards the last remembered player position
-		transform.position = Vector3.MoveTowards(transform.position, playerPos, ship.baseStats.speed * Time.deltaTime);
+		transform.position = Vector3.MoveTowards(transform.position, playerPos, ship.baseStats.moveSpeed * Time.deltaTime);
 	}
 	
 	// do any shooting after thinking this step

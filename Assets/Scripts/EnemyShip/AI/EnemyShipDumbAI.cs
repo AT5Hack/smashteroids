@@ -8,12 +8,7 @@ public class EnemyShipDumbAI : EnemyShipBaseAI {
 	protected override bool ShouldThink() {
 		return false;
 	}
-	
-	// should we shoot this step
-	protected override bool ShouldShoot() {
-		return false;
-	}
-	
+
 	// do any thinking and calculations about how to act this step
 	protected override void Think() {
 
@@ -22,12 +17,19 @@ public class EnemyShipDumbAI : EnemyShipBaseAI {
 	// do any movement after thinking this step
 	protected override void Move() {
 		// simply move to the left at a constant speed
-		transform.Translate(Vector3.left * ship.baseStats.speed * Time.deltaTime);
+		transform.Translate(Vector3.left * ship.baseStats.moveSpeed * Time.deltaTime);
 	}
 	
 	// do any shooting after thinking this step
 	protected override void Shoot() {
+		// load and instantiate the bullet
+		var bulletPrefab = Resources.Load("EnemyBullet");
+		var bulletGo = (GameObject) GameObject.Instantiate(bulletPrefab, ship.GetRandomGunPoint(), Quaternion.identity);
+		var bullet = bulletGo.GetComponent<EnemyBullet>();
 
+		if (bullet != null) {
+			bullet.speed = ship.baseStats.bulletSpeed;
+		}
 	}
 	#endregion functions to be implemented/overriden
 }

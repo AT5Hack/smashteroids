@@ -5,14 +5,20 @@ using System;
 
 public class PlayerShip : MonoBehaviour {
 
-	[Serializable]
+	/// BulletSpawn defines how to orient a bullet
+    [Serializable]
 	public class BulletSpawn
 	{
 		public float angle;
 		public Vector3 offset;
 	}
 
-	public List<BulletSpawn> bulletSpawns;
+	public AudioClip laserSound;
+	public AudioClip deathSound;
+
+	// Player can shoot multiple bullets, this list defines how many and how to orient all of them
+    public List<BulletSpawn> bulletSpawns;
+	public GameObject explosionPrefab;
 
 	float speed;
 	int hp;
@@ -114,6 +120,9 @@ public class PlayerShip : MonoBehaviour {
 			// fire bullet from ship's position and apply offset
 			bullet.transform.position = transform.position + spawn.offset;
 		}
+
+		SoundManager.Instance.PlayOnce(laserSound);
+
 	}
 	
 	public bool IsAlive() {
@@ -124,8 +133,15 @@ public class PlayerShip : MonoBehaviour {
 	{
 		Dispatcher.FireEvent (this, new PlayerDeathEvent ());
 
+		SoundManager.Instance.PlayOnce(deathSound);
+
 		gameObject.SetActive (false);
 
+		if(explosionPrefab != null)
+		{
+			var explosion = (GameObject) GameObject.Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+		}
+			
 		GameManager.Instance.TriggerEndGame();
 	}
 

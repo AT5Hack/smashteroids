@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AsteroidAI : EnemyShipBaseAI {
@@ -33,10 +33,10 @@ public class AsteroidAI : EnemyShipBaseAI {
 	protected override void Move() {
 		// simply move to the left at a constant speed
 		if (reverse) {
-			transform.Translate(Vector3.right * ship.baseStats.speed * 0.5f * Time.deltaTime);
+			transform.Translate(Vector3.right * ship.baseStats.moveSpeed * 0.5f * Time.deltaTime);
         }
 		else {
-			transform.Translate(Vector3.left * ship.baseStats.speed * Time.deltaTime);
+			transform.Translate(Vector3.left * ship.baseStats.moveSpeed * Time.deltaTime);
 		}
 	}
 	
