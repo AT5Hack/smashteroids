@@ -5,6 +5,7 @@ using System;
 
 public class PlayerShip : MonoBehaviour {
 
+	/// BulletSpawn defines how to orient a bullet
 	[Serializable]
 	public class BulletSpawn
 	{
@@ -14,6 +15,7 @@ public class PlayerShip : MonoBehaviour {
 	private AudioSource source;
 	public AudioClip lazerSound;
 
+	// Player can shoot multiple bullets, this list defines how many and how to orient all of them
 	public List<BulletSpawn> bulletSpawns;
 	public GameObject explosionPrefab;
 
@@ -29,7 +31,6 @@ public class PlayerShip : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-
 		source = GetComponent<AudioSource>();
 		speed = Tweakables.Instance.player.speed;
 		hp = Tweakables.Instance.player.hp;
@@ -94,7 +95,6 @@ public class PlayerShip : MonoBehaviour {
 	void ConstrainPosition() 
 	{
 		transform.position = GameManager.Instance.boundary.bounds.ClosestPoint (transform.position);
-
 	}
 
 	void Fire()
