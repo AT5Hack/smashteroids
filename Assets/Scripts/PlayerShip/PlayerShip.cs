@@ -19,23 +19,15 @@ public class PlayerShip : MonoBehaviour {
 	// Player can shoot multiple bullets, this list defines how many and how to orient all of them
     public List<BulletSpawn> bulletSpawns;
 	public GameObject explosionPrefab;
-
-	float speed;
-	int hp;
+	
 	bool controlLocked;
 	int damageTaken;
-
-	float fireSpeed = 0.2f;
 
 	float lastFire = 0;
 
 	// Use this for initialization
 	void Start () 
 	{
-		speed = Tweakables.Instance.player.speed;
-		hp = Tweakables.Instance.player.hp;
-		fireSpeed = Tweakables.Instance.player.fireSpeed;
-
 		StartCoroutine (ForceMovement(Vector3.right, 5));
     }
 	
@@ -85,7 +77,7 @@ public class PlayerShip : MonoBehaviour {
 
 	void Move(Vector3 direction)
 	{
-		transform.Translate(direction * speed * Time.deltaTime);
+		transform.Translate(direction * Tweakables.Instance.player.speed * Time.deltaTime);
     }
 
 	void ConstrainPosition() 
@@ -96,7 +88,7 @@ public class PlayerShip : MonoBehaviour {
 
 	void Fire()
 	{
-		if (Time.time < lastFire + fireSpeed)
+		if (Time.time < lastFire + Tweakables.Instance.player.fireSpeed)
 			return;
 
 		lastFire = Time.time;
@@ -122,7 +114,7 @@ public class PlayerShip : MonoBehaviour {
 	}
 	
 	public bool IsAlive() {
-		return (damageTaken < hp);
+		return (damageTaken < Tweakables.Instance.player.hp);
 	}
 
 	void Die()
@@ -149,7 +141,7 @@ public class PlayerShip : MonoBehaviour {
 		{
 			damageTaken += hazard.damage;
 
-			if (damageTaken >= hp)
+			if (damageTaken >= Tweakables.Instance.player.hp)
 			{
 				Die();
 			}

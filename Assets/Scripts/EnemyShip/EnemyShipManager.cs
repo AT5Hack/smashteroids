@@ -45,7 +45,11 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 					SpawnNewBossEnemy();
 				}
 				else {
-					SpawnNewNormalEnemyWave();
+					// spawn one simple enemy for now
+					SpawnSimpleNormalEnemyWave();
+
+					// for progressively harder and bigger waves use the following instead
+					//SpawnNewNormalEnemyWave();
 				}
 			}
 
@@ -57,6 +61,22 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 	private bool ShouldBeginNewWave() {
 		// start a new wave if we are stil alive and if we the last wave is complete or the min wait time as elapsed
 		return (GameManager.Instance.playerShip.IsAlive() && (isWaveComplete || (Time.time-lastSpawnTime) >= minWaveFreqWait));
+	}
+
+	private void SpawnSimpleNormalEnemyWave() {
+		isWaveComplete = false;
+		lastSpawnTime = Time.time;
+		enemyWaveCount++;
+		currentWaveEnemies.Clear ();
+		
+		// spawn one simple enemy
+		GameObject prefab;
+		GameObject clone;
+		Vector3 pos;
+		prefab = normalEnemyPrefabs[0];
+		pos = GetEnemySpawnPos();
+		clone = Instantiate (prefab, pos, Quaternion.identity) as GameObject;
+		currentWaveEnemies.Add (clone.GetComponent<EnemyShip>());
 	}
 
 	private void SpawnNewNormalEnemyWave() {
