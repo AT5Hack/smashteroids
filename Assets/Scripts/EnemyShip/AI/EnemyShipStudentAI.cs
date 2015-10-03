@@ -4,11 +4,6 @@ using System.Collections;
 public class EnemyShipStudentAI : EnemyShipBaseAI {
 
 	#region functions to be implemented/overriden
-	// should we think this step
-	protected override bool ShouldThink() {
-		return false;
-	}
-
 	// do any thinking and calculations about how to act this step
 	protected override void Think() {
 
