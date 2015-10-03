@@ -21,7 +21,7 @@ public class EnemyShipKamakazeAI : EnemyShipBaseAI {
 	
 	// do any shooting after thinking this step
 	protected override void Shoot() {
-		
+		// Kamakaze ships don't shoot, they just try and ram the player ship
 	}
 	#endregion functions to be implemented/overriden
 }
