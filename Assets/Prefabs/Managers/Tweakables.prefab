@@ -46,7 +46,7 @@ MonoBehaviour:
     bulletSpeed: 40
     fireSpeed: .200000003
   enemies:
-    dumb:
+    student:
       moveSpeed: 2
       bulletSpeed: 4
       hp: 3
@@ -74,6 +74,7 @@ MonoBehaviour:
       firingRate: 0
       thinkRate: 0
       moveRate: 0
+  useAllEnemies: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

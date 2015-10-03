@@ -999,11 +999,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 420864, guid: 9c4f558ca3906407894189773f56dbcb, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11493796, guid: 9c4f558ca3906407894189773f56dbcb, type: 2}
-      propertyPath: player.speed
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c4f558ca3906407894189773f56dbcb, type: 2}
