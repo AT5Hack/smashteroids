@@ -12,7 +12,7 @@ managers for this workshop are Tweakables and EnemyManager.
 ### Tweakables
 
 
-This manager contains data about very game objects that can easily be tweaked.
+This manager contains data about game objects that can easily be tweaked.
 The goal of this manager is to provide one place to change values while testing
 and tweaking how game objects behave. For this workshop we've added tweakable
 base stats for the player ship and enemy ships.
@@ -20,7 +20,7 @@ base stats for the player ship and enemy ships.
 ### EnemyShipManager
 
 
-This manager controls how enemy ships spawn. It is setup to spawn ships in 
+This manager controls how enemy ships spawn. It is set up to spawn ships in 
 continuous waves. The base values are controlled by public variables for
 wave frequency, the minimum time to wait between spawning new waves and
 what enemy ships to spawn.
@@ -30,7 +30,7 @@ will see that it spawns a new wave of enemies every time the player either
 destroys the previous wave or the minimum wave time has elapsed. Currently
 it calls SpawnSimpleNormalEnemyWave() to simply spawn one dumb enemy ship
 in every wave. But if you comment that out and replace it with 
-SpawnNewNormalEnemyWave() it will progressively spawn a random selection 
+SpawnNewNormalEnemyWave() it will progressively spawn a larger random selection 
 of enemy ship types for each wave.
 
 Play around with the values and code in here to change how enemy ships spawn.
@@ -56,7 +56,7 @@ EnemyShipBaseAI.cs is an abstract class that controls how an enemy ship behaves.
 As an abstract class it has some virtual functions that can be overridden if
 necessary, and it also has some abstract functions that must be implemented.
 
-The main Bain() loop first does a Think(), then a Move() and finally a Shoot()
+The main Brain() loop first does a Think(), then a Move() and finally a Shoot()
 function call. This basic structure controls how the enemy ship will behave.
 
 Play around with different values and implementations of this base class to
