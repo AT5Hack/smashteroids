@@ -24,7 +24,7 @@ public class Tweakables : Singleton<Tweakables> {
 	#region enemy stuff
 	public enum EnemyType {
 		NONE,
-		DUMB,
+		STUDENT,
 		SWOOP,
 		KAMAKAZE,
 		ASTEROID
@@ -33,7 +33,7 @@ public class Tweakables : Singleton<Tweakables> {
 	[Serializable]
 	public class EnemyTweaks
 	{
-		public DumbEnemyShip dumb;
+		public StudentEnemyShip student;
 		public SwoopEnemyShip swoop;
 		public KamakazeEnemyShip kamakaze;
 		public AsteroidEnemy asteroid;
@@ -49,7 +49,7 @@ public class Tweakables : Singleton<Tweakables> {
 		public float moveRate;
 	}
 
-	[Serializable] public class DumbEnemyShip : BaseEnemyStats {}
+	[Serializable] public class StudentEnemyShip : BaseEnemyStats {}
 	[Serializable] public class SwoopEnemyShip : BaseEnemyStats {}
 	[Serializable] public class KamakazeEnemyShip : BaseEnemyStats {}
 	[Serializable] public class AsteroidEnemy : BaseEnemyStats {}
@@ -63,9 +63,9 @@ public class Tweakables : Singleton<Tweakables> {
 		case EnemyType.ASTEROID:
 			return enemies.asteroid;
 		case EnemyType.NONE:
-		case EnemyType.DUMB:
+		case EnemyType.STUDENT:
 		default:
-			return enemies.dumb;
+			return enemies.student;
 		}
 	}
 	#endregion enemy stuff
