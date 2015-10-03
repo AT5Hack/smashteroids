@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11458108}
   - 50: {fileID: 5080618}
   m_Layer: 0
-  m_Name: EnemyDumbShip
+  m_Name: EnemyStudentShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
