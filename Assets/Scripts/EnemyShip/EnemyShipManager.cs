@@ -45,11 +45,15 @@ public class EnemyShipManager : Singleton<EnemyShipManager> {
 					SpawnNewBossEnemy();
 				}
 				else {
-					// spawn one simple enemy for now
-					SpawnSimpleNormalEnemyWave();
 
-					// for progressively harder and bigger waves use the following instead
-					//SpawnNewNormalEnemyWave();
+					if (Tweakables.Instance.useAllEnemies) {
+						// for progressively harder and bigger waves
+						SpawnNewNormalEnemyWave();
+					}
+					else {
+						// spawn one simple enemy for now
+						SpawnSimpleNormalEnemyWave();
+					}
 				}
 			}
 

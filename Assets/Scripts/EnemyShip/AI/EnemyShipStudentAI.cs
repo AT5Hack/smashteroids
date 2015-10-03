@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyShipDumbAI : EnemyShipBaseAI {
+public class EnemyShipStudentAI : EnemyShipBaseAI {
 
 	#region functions to be implemented/overriden
 	// should we think this step

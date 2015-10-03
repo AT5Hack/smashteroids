@@ -7,6 +7,8 @@ public class Tweakables : Singleton<Tweakables> {
 	public PlayerTweaks player;
 	public EnemyTweaks enemies;
 
+	public bool useAllEnemies = false;
+
 
 	#region player stuff
 	[Serializable]
